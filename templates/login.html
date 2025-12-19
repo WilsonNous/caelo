@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login | CAELO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="auth-page">
+
+  <div class="auth-container">
+    <img src="/static/img/logo.png" alt="CAELO" class="auth-logo">
+
+    <h2>Acesso ao Portal</h2>
+    <p>Área restrita para clientes e administração</p>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert {{ category }}">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      <input type="email" name="email" placeholder="E-mail" required>
+      <input type="password" name="senha" placeholder="Senha" required>
+
+      <button type="submit">Entrar</button>
+    </form>
+
+    <a href="/" class="back-link">← Voltar ao portal</a>
+  </div>
+
+</body>
+</html>
