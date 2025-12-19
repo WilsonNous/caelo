@@ -4,33 +4,76 @@
   <meta charset="UTF-8">
   <title>Login | CAELO</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="robots" content="noindex,nofollow">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="/static/css/style.css">
 </head>
 
 <body class="auth-page">
 
   <div class="auth-container">
-    <img src="/static/img/logo.png" alt="CAELO" class="auth-logo">
 
-    <h2>Acesso ao Portal</h2>
-    <p>Área restrita para clientes e administração</p>
+    <div class="auth-card">
 
-    {% with messages = get_flashed_messages(with_categories=true) %}
-      {% if messages %}
-        {% for category, message in messages %}
-          <div class="alert {{ category }}">{{ message }}</div>
-        {% endfor %}
-      {% endif %}
-    {% endwith %}
+      <img src="/static/img/logo.png" alt="CAELO" class="auth-logo">
 
-    <form method="POST">
-      <input type="email" name="email" placeholder="E-mail" required>
-      <input type="password" name="senha" placeholder="Senha" required>
+      <h2>Acesso ao Portal</h2>
+      <p class="auth-subtitle">
+        Área restrita para clientes e administração
+      </p>
 
-      <button type="submit">Entrar</button>
-    </form>
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+              {{ message }}
+            </div>
+          {% endfor %}
+        {% endif %}
+      {% endwith %}
 
-    <a href="/" class="back-link">← Voltar ao portal</a>
+      <form method="POST" class="auth-form">
+
+        <div class="field">
+          <label for="email">E-mail</label>
+          <input
+            id="email"
+            type="email"
+            name="email"
+            placeholder="seu@email.com"
+            required
+            autocomplete="username"
+          >
+        </div>
+
+        <div class="field">
+          <label for="senha">Senha</label>
+          <input
+            id="senha"
+            type="password"
+            name="senha"
+            placeholder="••••••••"
+            required
+            autocomplete="current-password"
+          >
+        </div>
+
+        <button type="submit" class="btn btn--primary auth-btn">
+          Entrar
+        </button>
+      </form>
+
+      <div class="auth-footer">
+        <a href="/" class="back-link">← Voltar ao portal</a>
+      </div>
+
+    </div>
+
   </div>
 
 </body>
