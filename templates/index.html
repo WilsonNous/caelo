@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="theme-color" content="#0b1b3a" />
+  <meta name="theme-color" content="#222C47" />
   <title>CAELO | Consultoria e Assessoria</title>
 
   <meta name="description"
@@ -29,7 +29,7 @@
 <header class="header" id="top">
   <div class="container header__inner">
 
-    <a class="brand" href="#top">
+    <a class="brand" href="#top" aria-label="Ir para o topo">
       <img class="brand__logo" src="/static/img/logo.png" alt="CAELO" />
       <div class="brand__text">
         <strong>CAELO</strong>
@@ -37,21 +37,23 @@
       </div>
     </a>
 
-    <nav class="nav">
-      <button class="nav__toggle" id="navToggle">
+    <nav class="nav" aria-label="Navegação">
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
 
       <ul class="nav__list" id="navList">
         <li><a href="#servicos">Serviços</a></li>
-        <li><a href="#diferenciais">Diferenciais</a></li>
         <li><a href="#visao">Missão & Visão</a></li>
         <li><a href="#contato">Contato</a></li>
         <li class="nav__cta">
-          <a class="btn btn--small btn--primary" target="_blank"
-             href="https://wa.me/554199642685">
+          <a class="btn btn--small btn--primary" target="_blank" rel="noopener"
+             href="https://wa.me/554199642685?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20a%20CAELO%20e%20seus%20serviços.">
             WhatsApp
           </a>
+        </li>
+        <li>
+          <a href="/login" style="opacity:.75">Área do cliente</a>
         </li>
       </ul>
     </nav>
@@ -65,9 +67,9 @@
 <section class="hero">
   <div class="container hero__grid">
 
+    <!-- Conteúdo -->
     <div class="hero__content">
       <div class="badge reveal">
-        <span class="dot"></span>
         Contabilidade consultiva • Clara • Atualizada
       </div>
 
@@ -77,8 +79,8 @@
       </h1>
 
       <p class="reveal">
-        Atendimento humano, ético e estratégico para atravessar mudanças,
-        crescer com segurança e manter suas obrigações em ordem.
+        Atendimento humano, ético e estratégico para atravessar mudanças, crescer com segurança
+        e manter suas obrigações em ordem — com clareza e responsabilidade.
       </p>
 
       <div class="hero__actions reveal">
@@ -86,7 +88,8 @@
         <a class="btn btn--ghost" href="#servicos">Ver serviços</a>
       </div>
 
-      <div class="hero__meta reveal">
+      <!-- Atalhos rápidos (ótimo no mobile) -->
+      <div class="hero__meta reveal" aria-label="Canais de contato">
         <div class="meta-card">
           <strong>WhatsApp</strong>
           <span>+55 41 9964-2685</span>
@@ -98,11 +101,28 @@
       </div>
     </div>
 
+    <!-- Visual / Proposta de valor -->
     <div class="hero__visual reveal">
       <div class="glass">
         <p class="quote">
           “Contabilidade é ordem. E ordem traz paz para crescer.”
         </p>
+
+        <div style="margin-top:14px; display:grid; gap:10px;">
+          <div class="meta-card" style="min-width:auto;">
+            <strong>Segurança e conformidade</strong>
+            <span>Rotina fiscal organizada e acompanhamento</span>
+          </div>
+          <div class="meta-card" style="min-width:auto;">
+            <strong>Clareza e proximidade</strong>
+            <span>Sem “contabilês” — orientação prática</span>
+          </div>
+          <div class="meta-card" style="min-width:auto;">
+            <strong>Visão consultiva</strong>
+            <span>Planejamento para decisões consistentes</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -128,7 +148,7 @@
   </div>
 </section>
 
-<!-- MISSÃO & VISÃO (VERSÃO COMPLETA) -->
+<!-- MISSÃO & VISÃO -->
 <section class="section section--alt" id="visao">
   <div class="container">
 
@@ -201,32 +221,47 @@
 
     <div class="section__head">
       <h2>Contato</h2>
-      <p>Solicite contato ou fale conosco pelo WhatsApp.</p>
+      <p>Escolha o canal e fale com a CAELO com tranquilidade.</p>
+    </div>
+
+    <!-- Atalhos (melhor UX no mobile) -->
+    <div class="grid cards" style="grid-template-columns: repeat(2, 1fr); margin-bottom: 14px;">
+      <a class="card" target="_blank" rel="noopener"
+         href="https://wa.me/554199642685?text=Olá!%20Vim%20pelo%20portal%20CAELO%20e%20gostaria%20de%20falar%20sobre%20serviços%20contábeis.">
+        📲 WhatsApp<br><span style="opacity:.8; font-weight:600;">Abrir conversa</span>
+      </a>
+      <a class="card"
+         href="mailto:caeloconsultoria@gmail.com?subject=Contato%20pelo%20Portal%20CAELO&body=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços.">
+        ✉️ E-mail<br><span style="opacity:.8; font-weight:600;">Enviar mensagem</span>
+      </a>
     </div>
 
     <form class="contact__form" method="POST" action="/lead">
-
       <div class="field">
-        <label>Nome</label>
-        <input name="nome" required>
+        <label for="nome">Nome</label>
+        <input id="nome" name="nome" required autocomplete="name">
       </div>
 
       <div class="field">
-        <label>Telefone</label>
-        <input name="telefone" required>
+        <label for="telefone">Telefone (WhatsApp)</label>
+        <input id="telefone" name="telefone" required autocomplete="tel">
       </div>
 
       <div class="field">
-        <label>E-mail</label>
-        <input name="email">
+        <label for="email">E-mail (opcional)</label>
+        <input id="email" name="email" autocomplete="email">
       </div>
 
       <div class="field">
-        <label>Mensagem</label>
-        <textarea name="mensagem" required></textarea>
+        <label for="mensagem">Mensagem</label>
+        <textarea id="mensagem" name="mensagem" required rows="4"></textarea>
       </div>
 
-      <button class="btn btn--primary">Enviar mensagem</button>
+      <button class="btn btn--primary" type="submit">Enviar mensagem</button>
+
+      <p style="margin:10px 0 0; color: rgba(255,255,255,.70); font-size:.92rem;">
+        Atendimento com ética, sigilo e clareza.
+      </p>
     </form>
 
   </div>
@@ -250,13 +285,14 @@
       <a href="#servicos">Serviços</a>
       <a href="#visao">Missão & Visão</a>
       <a href="#contato">Contato</a>
-      <a href="/login" style="opacity:.6">Área do cliente</a>
+      <a href="/login" style="opacity:.75">Área do cliente</a>
     </div>
 
   </div>
 
   <div class="footer__bottom">
-    © {{ year }} CAELO Consultoria e Assessoria
+    <span>© {{ year }} CAELO Consultoria e Assessoria. Todos os direitos reservados.</span>
+    <span class="muted">Desenvolvido por <strong>Nous Tecnologia</strong>.</span>
   </div>
 </footer>
 
